@@ -12,6 +12,7 @@
        apiKey="kt05vov950skrvbh3p17lldel39wlt96758sq5rmbkk5wq27"
          initialValue="<p>This is the initial content of the editor</p>"
          init={{
+            width: 1200,
            height: 500,
            menubar: false,
            plugins: [
