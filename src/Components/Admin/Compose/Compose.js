@@ -1,12 +1,33 @@
-import React from "react";
-import './Compose.css'
+ import React from 'react';
+ import { Editor } from '@tinymce/tinymce-react';
 
-function Compose() {
-    return(
-        <div className="compose">
-            I am compose
-        </div>
-    )
-}
+ class Compose extends React.Component {
+   handleEditorChange = (content, editor) => {
+     console.log('Content was updated:', content);
+   }
 
-export default Compose;
+   render() {
+     return (
+       <Editor
+       apiKey="kt05vov950skrvbh3p17lldel39wlt96758sq5rmbkk5wq27"
+         initialValue="<p>This is the initial content of the editor</p>"
+         init={{
+           height: 500,
+           menubar: false,
+           plugins: [
+             'advlist autolink lists link image charmap print preview anchor',
+             'searchreplace visualblocks code fullscreen',
+             'insertdatetime media table paste code help wordcount'
+           ],
+           toolbar:
+             'undo redo | formatselect | bold italic backcolor | \
+             alignleft aligncenter alignright alignjustify | \
+             bullist numlist outdent indent | removeformat | help'
+         }}
+         onEditorChange={this.handleEditorChange}
+       />
+     );
+   }
+ }
+
+ export default Compose;
