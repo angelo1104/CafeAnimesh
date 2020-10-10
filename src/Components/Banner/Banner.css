@@ -1,0 +1,12 @@
+.banner{
+    margin-bottom: 50px;
+}
+
+.banner h1{
+    color: #333333;
+    font-family: 'Lora', serif;
+    font-size: 85px;
+    font-weight: 400;
+    position: relative;
+    right: 100px;
+}

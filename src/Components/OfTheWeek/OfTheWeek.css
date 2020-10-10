@@ -1,0 +1,43 @@
+.of-the-week{
+    padding: 0 15%;
+    font-family: 'Lora', serif;
+}
+
+.of-the-week h2{
+    color: #333333;
+    font-size: 64px;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+.main-person{
+    float: left;
+    padding: 3px;
+    margin-right: 20px;
+    border: 1px solid lightgray;
+}
+
+.main-content{
+    display: contents;
+    float: right;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 18px;
+    object-fit: contain;
+    letter-spacing: 1px;
+    word-spacing: 1.25px;
+    color: #888;
+}
+
+.of-the-week .date p{
+    color: grey;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.comments-count{
+    font-size: 22px;
+    margin-left: 10px;
+    text-transform: uppercase;
+}
