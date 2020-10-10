@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from "react";
-import './Login.css'
+import './SignIn.css'
 import {auth} from "../../firebase";
 import {Link, useHistory} from 'react-router-dom'
 import {useStateValue} from "../../StateProvider";
 
-function Login() {
-    const [username,setUsername] = useState('')
+function SignIn() {
+    const history = useHistory()
+
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-    //eslint-disable-next-line
-    const [{user},dispatch] = useStateValue()
 
-    const history = useHistory()
+    //eslint-disable-next-line
+    const [{user},dispatch] = useStateValue();
 
     useEffect(()=>{
         if (user){
@@ -19,10 +19,10 @@ function Login() {
         }
     },[user,history])
 
-    const signUp = (event)=>{
-        event.preventDefault()
+    const signIn = (event)=>{
+        event.preventDefault();
 
-        auth.createUserWithEmailAndPassword(email,password)
+        auth.signInWithEmailAndPassword(email,password)
             .then(authUser=>{
                 history.push('/home')
             })
@@ -31,25 +31,20 @@ function Login() {
             })
     }
 
-    return (
-        <div className="login">
-            <form onSubmit={signUp}>
-                <input value={username} onChange={e=> setUsername(e.target.value)} className='login-input' type="text" placeholder='Your username' />
+    return(
+        <div className="signin">
+            <form onSubmit={signIn}>
                 <input value={email}  onChange={e=> setEmail(e.target.value)} className='login-input' type="email" placeholder='Your email' />
                 <input value={password} onChange={e=> setPassword(e.target.value)} className='login-input' type="password" placeholder='Your password' />
 
-                <button className='signup-button' type="submit">Sign Up</button>
-
-                <p className="terms">
-                    By signing up you accept our terms and conditions.
-                </p>
+                <button className='signup-button' type="submit">Sign In</button>
 
                 <h4>
-                    Got an account? <Link className='sign-in-link' to={'/accounts/emaillogin'}>Login</Link>
+                    Haven't got an account? <Link className='sign-in-link' to={'/'}>Sign Up</Link>
                 </h4>
             </form>
         </div>
     )
 }
 
-export default Login
+export default SignIn

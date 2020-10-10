@@ -55,3 +55,25 @@
 .signup-button:disabled{
     background: #B2DFFC;
 }
+
+.terms{
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.login form h4{
+    margin-top: 30px;
+    font-weight: 400;
+}
+
+.sign-in-link,.sign-in-link:hover,.sign-in-link:visited,.sign-in-link:focus{
+    text-decoration: none;
+}
+
+.sign-in-link{
+    color: #0095F6;
+}
+
+.sign-in-link:hover{
+    text-decoration: underline;
+}

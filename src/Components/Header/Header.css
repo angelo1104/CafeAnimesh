@@ -36,6 +36,7 @@ header{
 
 .header-link, .header-link:hover, .header-link:focus, .header-link:visited{
     text-decoration: none;
+    cursor: pointer;
 }
 
 .header-link p{

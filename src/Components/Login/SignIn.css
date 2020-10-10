@@ -1,0 +1,22 @@
+.signin {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin form{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    padding: 30px;
+}
+
+.signin form h4{
+    margin-top: 30px;
+    font-weight: 400;
+    text-align: center;
+}

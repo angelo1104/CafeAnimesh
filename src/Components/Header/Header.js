@@ -1,8 +1,13 @@
 import React from "react";
 import './Header.css'
 import {Link} from 'react-router-dom'
+import {auth} from "../../firebase";
 
 function Header() {
+    const signOut=(event)=>{
+        auth.signOut()
+    }
+
     return(
         <header className="header">
             <Link className='header-link' to='/home'>
@@ -27,6 +32,10 @@ function Header() {
                 <Link className='header-link' to='/feedback'>
                     <p>Feedback</p>
                 </Link>
+
+                <div className='header-link' onClick={signOut}>
+                    <p>Sign Out</p>
+                </div>
             </div>
         </header>
     )
