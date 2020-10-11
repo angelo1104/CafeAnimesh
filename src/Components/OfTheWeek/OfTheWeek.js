@@ -2,12 +2,12 @@ import React, {useEffect, useState} from "react";
 import './OfTheWeek.css'
 import {database} from "../../firebase";
 
-function OfTheWeek({type, collectionName}) {
+function OfTheWeek({type}) {
     const [documents,setDocuments] = useState([])
 
     useEffect( ()=>{
 
-        database.collection(collectionName)
+        database.collection(type)
             .orderBy('timestamp')
             .onSnapshot(snapshot => {
                const docs = snapshot.docs.map(doc=>{
@@ -16,13 +16,13 @@ function OfTheWeek({type, collectionName}) {
 
                 setDocuments(docs)
             })
-    },[collectionName])
+    },[type])
 
     useEffect(()=>{
-        console.log(documents.length - 1)
-
         try {
-            document.querySelector(`.main#${type}`).innerHTML = documents[documents.length - 1]?.html
+            let html = documents[documents.length - 1]?.html;
+            if (documents[documents.length - 1]?.html === undefined) html='There are no posts'
+            document.querySelector(`.main#${type}`).innerHTML = html
         }catch (e) {
             console.log(e)
         }
@@ -36,7 +36,9 @@ function OfTheWeek({type, collectionName}) {
 
             <h2>{type} of the Week</h2>
 
-            <div className="main" id={type}></div>
+            <div className="main" id={type}>
+
+            </div>
         </div>
     )
 }

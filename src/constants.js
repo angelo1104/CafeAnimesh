@@ -1,7 +1,3 @@
-export const personOfTheWeek = 'person-of-the-week';
-export const wordOfTheWeek = 'word-of-the-week';
-export const bookOfTheWeek = 'book-of-the-week';
-
 const options = {
         timeZone: 'Europe/London',
         year: 'numeric',

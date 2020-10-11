@@ -1,11 +1,36 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './Header.css'
-import {Link} from 'react-router-dom'
+import {Link,useLocation} from 'react-router-dom'
 import {auth} from "../../firebase";
+import {useStateValue} from "../../StateProvider";
 
 function Header() {
+    const location = useLocation();
+
     const signOut=(event)=>{
         auth.signOut()
+    }
+
+    const [amIAdmin,setAmIAdmin] = useState(false)
+
+    //eslint-disable-next-line
+    const [{userType},dispatch] = useStateValue()
+
+
+    useEffect(()=>{
+        if (location.pathname==='/admin'){
+            setAmIAdmin(true)
+        }
+    },[location.pathname,setAmIAdmin])
+
+    const goToConsole = ()=>{
+        if (userType==='admin' && amIAdmin===false){
+            return(
+                <Link className='header-link' to='/admin'>
+                    <p>Go to console</p>
+                </Link>
+            )
+        }
     }
 
     return(
@@ -36,6 +61,8 @@ function Header() {
                 <div className='header-link' onClick={signOut}>
                     <p>Sign Out</p>
                 </div>
+
+                {goToConsole()}
             </div>
         </header>
     )

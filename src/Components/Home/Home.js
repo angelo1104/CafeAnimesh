@@ -4,7 +4,6 @@ import Banner from "../Banner/Banner";
 import OfTheWeek from "../OfTheWeek/OfTheWeek";
 import {useHistory} from 'react-router-dom'
 import {useStateValue} from "../../StateProvider";
-import {personOfTheWeek} from "../../constants";
 
 function Home() {
     const history = useHistory()
@@ -21,7 +20,9 @@ function Home() {
         <div className="home-js">
             <Header/>
             <Banner title='Café Animesh!' imageUrl='http://cafeanimesh.weebly.com/files/theme/images/bg-light.jpg?1592320655'/>
-            <OfTheWeek type={'Person'} collectionName={personOfTheWeek}/>
+            <OfTheWeek type={'Person'} />
+            <OfTheWeek type={'Word'} />
+            <OfTheWeek type={'Book'} />
         </div>
     )
 }

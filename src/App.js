@@ -45,7 +45,7 @@ function App() {
         <Router>
             <Switch>
                 <Route path={'/admin'}>
-                    I am admin
+                    {<AdminHome/>}
                 </Route>
                 <Route path={'/accounts/emaillogin'}>
                     <SignIn/>

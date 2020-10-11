@@ -17,7 +17,7 @@
      const submitPost = (event)=>{
          event.preventDefault()
 
-        database.collection(collectionName)
+        database.collection(type)
             .add({
                 html: personOfTheWeekText,
                 timestamp: formatter.format(new Date())
