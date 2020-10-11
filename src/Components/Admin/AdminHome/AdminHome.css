@@ -13,6 +13,23 @@
 .admin-welcome{
     font-size: 150px;
     width: fit-content;
-    font-family: 'Lora', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #333333;
+    font-style: italic;
     margin-bottom: 40px;
+}
+
+.compose-title{
+    width: fit-content !important;
+    margin: auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.separator{
+   border: none;
+   border-bottom: 1px solid lightgray;
+    width: 60%;
+    margin: 30px auto;
 }

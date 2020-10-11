@@ -1,3 +1,53 @@
 .tox-tinymce{
+    overflow-x: hidden;
+    display: flex;
+    width: 100%;
+    border: none;
+    margin: 50px auto;
+}
+
+.compose{
+    display: flex;
+    flex-direction: column;
+    width: 80% !important;
+    overflow-x: hidden !important;
     margin: auto;
+}
+
+.compose h2,.compose-title{
+    font-family: 'Lora', serif;
+    font-weight: lighter;
+    font-style: oblique;
+    font-size: 64px;
+    margin-top: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.special{
+    text-align: left !important;
+    padding-left: 10px;
+}
+
+.compose-button{
+    margin: auto auto 10px !important;
+    width: 30% !important;
+    color: #0095F6 !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.error-success{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success{
+    color: teal;
+}
+
+.error{
+    color: red;
 }

@@ -32,9 +32,6 @@ function App() {
     <div className="App">
         <Router>
             <Switch>
-                <Route>
-                    <AdminHome/>
-                </Route>
                 <Route path={'/admin'}>
                     I am admin
                 </Route>
