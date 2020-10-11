@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './Login.css'
-import {auth} from "../../firebase";
+import {auth, database} from "../../firebase";
 import {Link, useHistory} from 'react-router-dom'
 import {useStateValue} from "../../StateProvider";
 
@@ -24,6 +24,25 @@ function Login() {
 
         auth.createUserWithEmailAndPassword(email,password)
             .then(authUser=>{
+                let userType = 'user'
+                if (email==='alix@gmail.com') userType='admin'
+                database.collection('users')
+                    .doc(email)
+                    .set({
+                        userType: userType,
+                        email: email
+                    })
+                    .then(res=>{
+                      console.log('Successfully added user to db')
+                    })
+                    .catch(err=>{
+                        console.log('Error in adding user to db',err)
+                    })
+
+                auth.currentUser.updateProfile({
+                    displayName: username
+                })
+
                 history.push('/home')
             })
             .catch(err=>{
