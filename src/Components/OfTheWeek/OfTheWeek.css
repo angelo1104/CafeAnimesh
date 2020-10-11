@@ -1,6 +1,7 @@
 .of-the-week{
     padding: 0 15%;
     font-family: 'Lora', serif;
+    margin-bottom: 50px;
 }
 
 .of-the-week h2{
@@ -44,4 +45,33 @@
 
 .main{
     margin-bottom: 30px;
+}
+
+.comment-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+}
+
+.comment-input{
+    flex: 0.9;
+    margin-bottom: 10px;
+}
+
+.comment-button{
+    flex: 0.10;
+}
+
+div.comments{
+    display: block;
+    margin-bottom: 20px;
+}
+
+p.comment{
+    font-family: 'Montserrat', sans-serif;
+}
+
+span.username{
+    font-weight: 600;
 }

@@ -25,6 +25,7 @@
             .then(res=>{
                 console.log('Success',res)
                 setMessage(`${type} of the week is successfully updated.`)
+                setPersonOfTheWeekText(`<p>${type} of the week.<p/>`)
                 setError('success')
             })
             .catch(err=>{
@@ -41,7 +42,7 @@
 
              <Editor
                  apiKey="kt05vov950skrvbh3p17lldel39wlt96758sq5rmbkk5wq27"
-                 initialValue={personOfTheWeekText}
+                 value={personOfTheWeekText}
                  plugins={['autoresize']}
                  init={{
                      height: 500,
