@@ -70,8 +70,15 @@ div.comments{
 
 p.comment{
     font-family: 'Montserrat', sans-serif;
+    margin: 10px 0;
 }
 
 span.username{
     font-weight: 600;
+    margin-right: 10px;
+}
+
+.main{
+    color: #333333 !important;
+    font-family: 'Playfair Display', serif !important;
 }

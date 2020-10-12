@@ -1,0 +1,28 @@
+.main-documents{
+    width: 100%;
+}
+
+.main-documents h2{
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    color: #333333;
+    font-size: 32px;
+    width: 80%;
+    margin: auto;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+
+.documents-bold{
+    font-size: 59px;
+    font-weight: 700;
+    letter-spacing: 1.25px;
+}
+
+.resources-section{
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 50px;
+}

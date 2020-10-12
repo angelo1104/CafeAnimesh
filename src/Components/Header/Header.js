@@ -54,6 +54,9 @@ function Header() {
                 <Link className='header-link' to='/assignments'>
                     <p>Assignments</p>
                 </Link>
+                <Link className='header-link' to='/documents'>
+                    <p>Documents</p>
+                </Link>
                 <Link className='header-link' to='/feedback'>
                     <p>Feedback</p>
                 </Link>

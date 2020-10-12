@@ -1,0 +1,35 @@
+.multi-line-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+}
+
+.multi-line-input *{
+    position: absolute;
+    width: 90%;
+}
+
+.multi-line-input input{
+    outline-width: 0;
+    border: none;
+    color: transparent;
+    caret-color: black;
+    background: transparent;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    border-bottom: 1px solid lightgray;
+    resize: none;
+    word-break: break-all;
+}
+
+.multi-line-input span{
+    width: 90% !important;
+    word-break: break-all;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+

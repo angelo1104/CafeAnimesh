@@ -7,6 +7,7 @@ import {auth, database} from "./firebase";
 import {useStateValue} from "./StateProvider";
 import Home from "./Components/Home/Home";
 import AdminHome from "./Components/Admin/AdminHome/AdminHome";
+import Documents from "./Components/Documents/Documents";
 
 function App() {
     //eslint-disable-next-line
@@ -45,16 +46,19 @@ function App() {
         <Router>
             <Switch>
                 <Route path={'/admin'}>
-                    {<AdminHome/>}
+                    {<AdminHome />}
                 </Route>
                 <Route path={'/accounts/emaillogin'}>
-                    <SignIn/>
+                    <SignIn />
+                </Route>
+                <Route path={'/documents'}>
+                    <Documents />
                 </Route>
                 <Route path={'/home'}>
-                    <Home/>
+                    <Home />
                 </Route>
                 <Route path='/'>
-                    <Login/>
+                    <Login />
                 </Route>
             </Switch>
         </Router>
