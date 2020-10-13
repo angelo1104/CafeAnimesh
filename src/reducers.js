@@ -1,6 +1,6 @@
 export const initialState = {
     user:null,
-    userType: null
+    userType: null,
 }
 
 const reducer = (state,action)=>{

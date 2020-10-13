@@ -3,11 +3,11 @@ import './Documents.css';
 import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
 import Resources from "./Resources/Resources";
-import MiniDrawer from "./Resources/TemporaryDrawer";
 
 function Documents() {
     return(
         <div className="documents">
+            <Header/>
 
             <Banner imageUrl={'http://cafeanimesh.weebly.com/files/theme/images/bg-light.jpg?1592320655'}/>
             <div className="main-documents">
@@ -19,7 +19,6 @@ function Documents() {
                     <Resources/>
                 </div>
 
-                <MiniDrawer/>
             </div>
         </div>
     )

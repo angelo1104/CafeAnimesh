@@ -4,6 +4,7 @@ import Header from "../../Header/Header";
 import Compose from "../Compose/Compose";
 import {useStateValue} from "../../../StateProvider";
 import {useHistory} from 'react-router-dom'
+import GoTo from "../GoTo/GoTo";
 
 function AdminHome() {
     const history = useHistory()
@@ -30,6 +31,9 @@ function AdminHome() {
                    Hi ,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Admin
                </h1>
            </div>
+            <div className="gotos">
+                <GoTo/>
+            </div>
             <h2 className='compose-title'>Compose</h2>
             <Compose type={'Person'}/>
             <hr className='separator'/>

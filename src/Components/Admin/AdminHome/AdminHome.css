@@ -33,3 +33,10 @@
     width: 60%;
     margin: 30px auto;
 }
+
+.gotos{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    border-bottom: 1px solid lightgray;
+}

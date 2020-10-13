@@ -1,0 +1,41 @@
+.admin-docs h3{
+    font-family: 'Montserrat', sans-serif;
+    color: #333333;
+    font-weight: 500 !important;
+    padding-left: 150px;
+    font-size: 58px;
+}
+
+div.resource{
+    display: flex;
+    flex-direction: column;
+    padding: 100px 70px;
+    align-items: center;
+}
+
+div.resource .resource-title{
+    text-align: center;
+    font-size: 43px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 300;
+    padding: 10px 15px;
+    outline-width: 0;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    width: 300px;
+}
+
+.drop-zone{
+    margin-top: 50px;
+    border-style: dashed;
+    border: 1px solid lightgray;
+}
+
+.content {
+    background-color: white;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

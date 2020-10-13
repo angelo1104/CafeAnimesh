@@ -9,7 +9,8 @@ header{
     color: #333333;
     font-family: 'Lora', serif;
     font-weight: 400;
-    width: fit-content;
+    width: 100% !important;
+    object-fit: contain;
     text-align: center;
 }
 

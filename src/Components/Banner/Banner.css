@@ -10,3 +10,10 @@
     position: relative;
     right: 100px;
 }
+
+.drawer-icon{
+    color: grey !important;
+    position: absolute !important;
+    right: 300px;
+    top: 30px;
+}

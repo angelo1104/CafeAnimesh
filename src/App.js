@@ -8,6 +8,7 @@ import {useStateValue} from "./StateProvider";
 import Home from "./Components/Home/Home";
 import AdminHome from "./Components/Admin/AdminHome/AdminHome";
 import Documents from "./Components/Documents/Documents";
+import AdminDocs from "./Components/Admin/AdminDocs/AdminDocs";
 
 function App() {
     //eslint-disable-next-line
@@ -47,6 +48,9 @@ function App() {
             <Switch>
                 <Route path={'/admin'}>
                     {<AdminHome />}
+                </Route>
+                <Route path={'/admin-docs'}>
+                    <AdminDocs />
                 </Route>
                 <Route path={'/accounts/emaillogin'}>
                     <SignIn />

@@ -1,0 +1,22 @@
+.goto-link,.goto-link:hover,.goto-link:focus,.goto-link:visited{
+    text-decoration: none !important;
+}
+
+.goto{
+    text-align: center;
+    padding: 10px 15px;
+    -webkit-box-shadow: -2px 0px 10px -4px rgba(0,0,0,0.31);
+    -moz-box-shadow: -2px 0px 18px -4px rgba(0,0,0,0.31);
+    box-shadow: -2px 0px 18px -4px rgba(0,0,0,0.31);
+}
+
+.goto p{
+    color: grey;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 200ms ease-in-out, font-weight 200ms ease-in-out;
+}
+
+.goto p:hover{
+    color: #333333;
+    font-weight: 500;
+}
