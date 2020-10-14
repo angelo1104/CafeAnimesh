@@ -1,14 +1,16 @@
-import React,{useState, useEffect, useRef} from 'react';
+import React,{useState, useRef} from 'react';
 import './DropZone.css'
 import {database, storage} from "../../../../firebase";
 import {Button} from "@material-ui/core";
+import {nanoid} from 'nanoid'
 
 const DropZone = () => {
     const [selectedFiles, setSelectedFiles] = useState([]);
     const [errorMessage, setErrorMessage] = useState('')
-    const [validFiles, setValidFiles] = useState([]);
     const fileInputRef = useRef();
     const [resourceTitle,setResourceTitle] = useState('')
+    const idOfDocument = resourceTitle+nanoid()
+    const [progress,setProgress] = useState(0)
 
     const fileInputClicked = () => {
         fileInputRef.current.click();
@@ -48,7 +50,6 @@ const DropZone = () => {
             } else {
                 files[i]['invalid'] = true;
                 setSelectedFiles(prevArray => [...prevArray, files[i]]);
-                setErrorMessage('File type not permitted');
             }
         }
 
@@ -64,13 +65,6 @@ const DropZone = () => {
     }
 
     const removeFile = (name) => {
-        // find the index of the item
-        // remove the item from array
-
-        const validFileIndex = validFiles.findIndex(e => e.name === name);
-        validFiles.splice(validFileIndex, 1);
-        // update validFiles array
-        setValidFiles([...validFiles]);
         const selectedFileIndex = selectedFiles.findIndex(e => e.name === name);
         selectedFiles.splice(selectedFileIndex, 1);
         // update selectedFiles array
@@ -89,90 +83,79 @@ const DropZone = () => {
         return fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length) || fileName;
     }
 
-    const uploadFilesAsPromise = (file,path)=>{
-        return new Promise(function (resolve, reject) {
-            let storageRef = storage.ref(path);
-
-            //Upload file
-            let task = storageRef.put(file);
-
-            //Update progress bar
-            task.on('state_changed',
-                function progress(snapshot){
-                    let percentage = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-                    console.log(percentage)
-                },
-                function error(err){
-
-                },
-                function complete(){
-                    let downloadURL = task.snapshot.downloadURL;
-                    console.log(downloadURL)
-                }
-            );
-        });
-    }
-
 
     const uploadFiles = ()=>{
         console.log('clicked')
+        setErrorMessage('')
 
-        database.collection('documents')
-            .add({
-                title: resourceTitle
-            })
-            .then(()=>{
-                console.log('created collection in db')
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-
-        selectedFiles.forEach((file,i)=>{
-            uploadFilesAsPromise(file,`resources/${resourceTitle}/${file.name}`)
-                .then(res=>{
-                    console.log(res)
+        if (resourceTitle!==''){
+            database.collection('documents')
+                .doc(idOfDocument)
+                .set({
+                    title: resourceTitle
                 })
-        })
+                .then(()=>{
+                    console.log('created collection in db')
+                    selectedFiles.forEach((file,index)=>{
+                        const uploadTask = storage.ref(`resources/${resourceTitle}/${file.name}${index}`).put(file);
 
-        // selectedFiles.forEach((file,i)=>{
-        //     console.log(file.name)
-        //     const uploadTask = storage.ref('files/image').put(selectedFiles[0])
-        //
-        //     uploadTask.on('state_changed',(snapshot)=>{
-        //         console.log(snapshot.bytesTransferred/snapshot.totalBytes*100)
-        //
-        //     },(error)=>{
-        //         console.log(error)
-        //     },()=>{
-        //         storage.ref('files/image').getDownloadURL()
-        //             .then(url=>{
-        //                 console.log(url)
-        //             })
-        //     })
-        // })
+                        uploadTask.on('state_changed',(snapshot)=>{
+                            const uploadProgress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+                            setProgress(uploadProgress)
+
+                            console.log(uploadProgress)
+                        },(error)=>{
+                            console.log(error)
+                        },()=>{
+                            storage.ref(`resources/${resourceTitle}`)
+                                .child(`${file.name}${index}`)
+                                .getDownloadURL()
+                                .then(url=>{
+                                    console.log(url)
+                                    database.collection('documents')
+                                        .doc(idOfDocument)
+                                        .collection('files')
+                                        .add({
+                                            name: file.name,
+                                            url: url
+                                        })
+                                        .then(res=>{
+                                            console.log('succesfully added urls to db')
+                                        })
+                                        .catch(err=>{
+                                            console.log(err)
+                                        })
+
+                                })
+                                .catch(error=>{
+                                    console.log(error)
+                                })
+                        })
+                    })
+
+                    setSelectedFiles([])
+                    setResourceTitle('')
+
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+        }else {
+            setErrorMessage('A title is required.')
+        }
 
     }
 
-
-    useEffect(() => {
-        let filteredArray = selectedFiles.reduce((file, current) => {
-            const x = file.find(item => item.name === current.name);
-            if (!x) {
-                return file.concat([current]);
-            } else {
-                return file;
-            }
-        }, []);
-        setValidFiles([...filteredArray]);
-
-    }, [selectedFiles]);
 
 
     return (
         <>
             <Button className="file-upload-btn" onClick={uploadFiles}>Upload Files</Button>
-            <input className={'resource-title'} value={resourceTitle} onChange={e => setResourceTitle(e.target.value)} type="text" placeholder={'Resource Title'}/>
+            <progress value={progress}></progress>
+            <p className="error file-error-message">{errorMessage}</p>
+            <input className={'resource-title'} value={resourceTitle} onChange={e => {
+                setResourceTitle(e.target.value)
+            }} type="text" placeholder={'Resource Title'}/>
             <div className="container">
                 <div className="drop-container"
                      onClick={fileInputClicked}
@@ -195,13 +178,13 @@ const DropZone = () => {
                 </div>
                 <div className="file-display-container">
                     {
-                        validFiles.map((data, i) =>
+                        selectedFiles.map((data, i) =>
                             <div className="file-status-bar" key={i}>
                                 <div>
                                     <div className="file-type-logo"></div>
                                     <div className="file-type">{fileType(data.name)}</div>
                                     <span className={`file-name ${data.invalid ? 'file-error' : ''}`}>{data.name}</span>
-                                    <span className="file-size">({fileSize(data.size)})</span> {data.invalid && <span className='file-error-message'>({errorMessage})</span>}
+                                    <span className="file-size">({fileSize(data.size)})</span>
                                 </div>
                                 <div className="file-remove" onClick={() => removeFile(data.name)}>X</div>
                             </div>

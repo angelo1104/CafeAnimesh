@@ -11,6 +11,7 @@
     "@tinymce/tinymce-react": "^3.7.0",
     "date-fns": "^2.16.1",
     "firebase": "^7.23.0",
+    "nanoid": "^3.1.12",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-drop-zone": "^4.2.3",
