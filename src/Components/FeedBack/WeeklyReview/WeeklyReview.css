@@ -1,0 +1,35 @@
+.weeklyReview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.review-heading h2{
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    color: #333333;
+    font-size: 45px;
+    font-weight: 400 !important;
+}
+
+.review-heading p{
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    margin-top: 30px;
+}
+
+.dropdown-label{
+    font-family: 'Playfair Display', serif;
+    font-style: normal !important;
+    font-size: 18px;
+}
+
+.weeklyReview input{
+    outline-width: 0;
+    width: 90%;
+    padding: 5px 5px;
+    border: 1px solid lightgray;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 15px;
+}

@@ -9,6 +9,7 @@ import Home from "./Components/Home/Home";
 import AdminHome from "./Components/Admin/AdminHome/AdminHome";
 import Documents from "./Components/Documents/Documents";
 import AdminDocs from "./Components/Admin/AdminDocs/AdminDocs";
+import FeedBack from "./Components/FeedBack/FeedBack";
 
 function App() {
     //eslint-disable-next-line
@@ -54,6 +55,9 @@ function App() {
                 </Route>
                 <Route path={'/accounts/emaillogin'}>
                     <SignIn />
+                </Route>
+                <Route path={'/feedback'}>
+                    <FeedBack/>
                 </Route>
                 <Route path={'/documents'}>
                     <Documents />
