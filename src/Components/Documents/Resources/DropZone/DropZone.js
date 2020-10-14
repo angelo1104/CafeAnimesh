@@ -133,13 +133,13 @@ const DropZone = () => {
                         })
                     })
 
-                    setSelectedFiles([])
-                    setResourceTitle('')
-
                 })
                 .catch(err=>{
                     console.log(err)
                 })
+
+            setSelectedFiles([])
+            setResourceTitle('')
         }else {
             setErrorMessage('A title is required.')
         }

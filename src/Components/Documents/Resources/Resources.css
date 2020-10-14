@@ -8,3 +8,44 @@ div.resources h3{
     font-size: 45px;
     font-weight: 500;
 }
+
+.file-logo-documents{
+    align-self: flex-start !important;
+}
+
+.documents-file-logo{
+    background-size: 75% !important;
+}
+
+.files{
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.file-main-documents{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.file-main-documents h4{
+    margin-left: 60px;
+    font-family: 'Playfair Display', serif;
+    color: #333333;
+}
+
+.file-main-documents a{
+    margin-left: 60px;
+    color: grey;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.file-main-documents a:hover{
+    color: #333333;
+}
