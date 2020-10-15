@@ -16,6 +16,18 @@ function WeeklyReview() {
 
                 <p className="dropdown-label">Comment</p>
                 <input type="text" value={comment} onChange={e=>setComment(e.target.value)} />
+
+                <div className="name">
+                    <div className="first-name">
+                        <p className="dropdown-label">First name</p>
+                        <input type="text" value={comment} onChange={e=>setComment(e.target.value)} />
+                    </div>
+
+                    <div className="last-name">
+                        <p className="dropdown-label">Last name</p>
+                        <input type="text" value={comment} onChange={e=>setComment(e.target.value)} />
+                    </div>
+                </div>
             </div>
         </div>
     )

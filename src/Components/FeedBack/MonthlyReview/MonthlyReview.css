@@ -1,0 +1,27 @@
+.monthly-review{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.monthly-review p.info{
+    font-size: 13px;
+    font-style: normal;
+}
+
+.monthly-review input{
+    outline-width: 0;
+    width: 90%;
+    padding: 10px 5px;
+    border: 1px solid lightgray;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 15px;
+}
+
+.monthly-review textarea{
+    outline-width: 0;
+    border: 1px solid lightgray;
+    margin-top: 15px !important;
+    width: 80% !important;
+    resize: vertical;
+}
