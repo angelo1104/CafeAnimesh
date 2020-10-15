@@ -1,0 +1,8 @@
+.assignments-upload{
+    padding: 50px 80px;
+}
+
+.assignments-upload .review-heading{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,18 @@
+.disclaimer{
+    padding: 50px 80px;
+}
+
+.disclaimer p{
+    font-style: normal !important;
+    font-size: 18px !important;
+    color: grey !important;
+    line-height: 1.8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.disclaimer p span{
+    font-size: 12px;
+    margin-left: 15px;
+}
