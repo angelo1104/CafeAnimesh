@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -15,9 +15,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function DropDown({menu,label}) {
+function DropDown({menu,label,value,setValue}) {
     const classes = useStyles();
-    const [selected,setSelected] = useState('')
     //eslint-disable-next-line
     const newMenu = menu.filter((item,i)=>{
         if (i!==0){
@@ -26,7 +25,9 @@ function DropDown({menu,label}) {
     })
 
     const handleChange = (event) => {
-        setSelected(event.target.value);
+        setValue(event.target.value);
+
+        console.log(value)
     };
     return (
         <FormControl className={classes.formControl}>
@@ -34,7 +35,7 @@ function DropDown({menu,label}) {
             <Select
                 labelId="demo-simple-select-placeholder-label-label"
                 id="demo-simple-select-placeholder-label"
-                value={selected}
+                value={value}
                 onChange={handleChange}
                 displayEmpty
                 className={classes.selectEmpty}
@@ -42,8 +43,8 @@ function DropDown({menu,label}) {
                 <MenuItem value="">
                     <em>{menu[0]}</em>
                 </MenuItem>
-                {newMenu?.map(item=>{
-                    return (<MenuItem value={item}>
+                {newMenu?.map((item,i)=>{
+                    return (<MenuItem key={`${i}${item}${Math.random()}`} value={item}>
                         {item}
                     </MenuItem>)
                 })}

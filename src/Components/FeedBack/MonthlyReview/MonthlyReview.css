@@ -23,5 +23,6 @@
     border: 1px solid lightgray;
     margin-top: 15px !important;
     width: 80% !important;
-    resize: vertical;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
 }

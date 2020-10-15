@@ -16,7 +16,8 @@ function OfTheWeek({type}) {
     useEffect( ()=>{
 
         const unsubscribeDocuments = database.collection(type)
-            .orderBy('timestamp')
+            .orderBy('timestamp','desc')
+            .limit(1)
             .onSnapshot(snapshot => {
                const docs = snapshot.docs.map(doc=>{
                    return {
