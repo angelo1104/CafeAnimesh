@@ -12,6 +12,7 @@ function AssignmentsUpload() {
     const [files,setFiles] = useState(null)
 //eslint-disable-next-line
     const [{user},dispatch] = useStateValue()
+    const [message,setMessage] = useState('')
 
     const [uniqueID,setUniqueID] = useState('');
 
@@ -59,8 +60,13 @@ function AssignmentsUpload() {
                                 })
                                 .then(()=>{
                                     console.log('added url')
-                                })
+                                    setMessage('Your assignments are successfully uploaded.')
+                                    setLastName('')
+                                    setFirstName('')
+                                    setEmail('')
+                             })
                                 .catch((error)=>{
+                                    setMessage('There is a bug. Try again later.')
                                     console.log(error)
                                 })
                         })
@@ -92,12 +98,14 @@ function AssignmentsUpload() {
                 </div>
 
                 <p className="dropdown-label">Email</p>
-                <input type="text" value={email} onChange={e=>setEmail(e.target.value)}/>
+                <input type="email" value={email} onChange={e=>setEmail(e.target.value)}/>
 
                 <p className="dropdown-label">Upload Files</p>
                 <input type="file" className={'file-upload-input'} onChange={handleFileChange}/>
 
                 <Button className={'submit-button-assignments'} onClick={submitAssignments}>Submit</Button>
+
+                <p className="error-review">{message}</p>
             </div>
         </div>
     )
