@@ -6,15 +6,10 @@ function AssignmentsUpload() {
     const [firstName,setFirstName] = useState('')
     const [lastName,setLastName] = useState('')
     const [email,setEmail] = useState('')
-    const [files,setFiles] = useState([])
-
     const handleFileChange = (e)=>{
         console.log(e.target.files)
     }
 
-    useEffect(()=>{
-        console.log(files)
-    },[files])
 
     return (
         <div className="assignments-upload">
