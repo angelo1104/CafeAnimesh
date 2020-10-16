@@ -12,7 +12,7 @@ function Banner({title,imageUrl}) {
         background: `url(${imageUrl})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPositionY: '-200px'
+        backgroundPositionY: '-200px',
     }
 
     return(

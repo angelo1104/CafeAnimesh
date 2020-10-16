@@ -5,8 +5,8 @@
  import {database} from "../../../firebase";
  import {formatter} from "../../../constants";
 
- function Compose({type,collectionName}) {
-     const [personOfTheWeekText,setPersonOfTheWeekText] = useState(`<p>${type} of the week.<p/>`)
+ function Compose({type}) {
+     const [personOfTheWeekText,setPersonOfTheWeekText] = useState(type==='Samovar'? '<p>Post a Samovar</p>':`<p>${type} of the week</p>`)
      const [message,setMessage] = useState(null)
      const [error,setError] = useState('error')
 
@@ -24,8 +24,8 @@
             })
             .then(res=>{
                 console.log('Success',res)
-                setMessage(`${type} of the week is successfully updated.`)
-                setPersonOfTheWeekText(`<p>${type} of the week.<p/>`)
+                setMessage(type==='Samovar'? 'Samovar is successfully updated':`${type} of the week is successfully updated.`)
+                setPersonOfTheWeekText(type==='Samovar'? '<p>Post a Samovar</p>':`<p>${type} of the week</p>`)
                 setError('success')
             })
             .catch(err=>{
@@ -38,7 +38,7 @@
 
      return (
          <div className="compose">
-             <h2 className='special'>{type} of the week</h2>
+             <h2 className='special'>{type==='Samovar'? 'Samovar': `${type} of the week`}</h2>
 
              <Editor
                  apiKey="kt05vov950skrvbh3p17lldel39wlt96758sq5rmbkk5wq27"

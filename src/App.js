@@ -13,6 +13,8 @@ import FeedBack from "./Components/FeedBack/FeedBack";
 import Assignments from "./Components/Assignments/Assignments";
 import AdminFeedBack from "./Components/Admin/AdminFeedback/AdminFeedback";
 import AdminAssignments from "./Components/Admin/AdminAssignments/AdminAssignments";
+import Samovar from "./Components/Samovar/Samovar";
+import AdminSamovar from "./Components/Admin/AdminSamovar/AdminSamovar";
 
 function App() {
     //eslint-disable-next-line
@@ -53,6 +55,9 @@ function App() {
                 <Route path={'/admin'}>
                     {<AdminHome />}
                 </Route>
+                <Route path={'/admin-samovar'}>
+                    <AdminSamovar />
+                </Route>
                 <Route path={'/admin-docs'}>
                     <AdminDocs />
                 </Route>
@@ -64,6 +69,9 @@ function App() {
                 </Route>
                 <Route path={'/accounts/emaillogin'}>
                     <SignIn />
+                </Route>
+                <Route path={'/samovar'}>
+                    <Samovar/>
                 </Route>
                 <Route path={'/assignments'}>
                     <Assignments/>

@@ -35,6 +35,7 @@ function AdminHome() {
                 <GoTo url={'admin-docs'} displayText={'Add some documents'}/>
                 <GoTo url={'admin-feedback'} displayText={'Review some reviews'}/>
                 <GoTo url={'admin-assignments'} displayText={'Check in some knowledge'}/>
+                <GoTo url={'admin-samovar'} displayText={'Post a samovar'}/>
             </div>
             <h2 className='compose-title'>Compose</h2>
             <Compose type={'Person'}/>
