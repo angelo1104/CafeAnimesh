@@ -1,5 +1,7 @@
 .assignments-upload{
     padding: 50px 80px;
+    display: flex;
+    flex-direction: column;
 }
 
 .assignments-upload .review-heading{
@@ -19,4 +21,12 @@
 
 .file-upload-input{
     font-size: 14px !important;
+}
+
+.submit-button-assignments{
+    color: teal !important;
+    width: 30%;
+    margin: 30px auto !important;
+    justify-self: center;
+    align-self: center;
 }
