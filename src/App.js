@@ -11,6 +11,7 @@ import Documents from "./Components/Documents/Documents";
 import AdminDocs from "./Components/Admin/AdminDocs/AdminDocs";
 import FeedBack from "./Components/FeedBack/FeedBack";
 import Assignments from "./Components/Assignments/Assignments";
+import AdminFeedBack from "./Components/Admin/AdminFeedback/AdminFeedback";
 
 function App() {
     //eslint-disable-next-line
@@ -53,6 +54,9 @@ function App() {
                 </Route>
                 <Route path={'/admin-docs'}>
                     <AdminDocs />
+                </Route>
+                <Route path={'/admin-feedback'}>
+                    <AdminFeedBack/>
                 </Route>
                 <Route path={'/accounts/emaillogin'}>
                     <SignIn />

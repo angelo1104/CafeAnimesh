@@ -1,0 +1,27 @@
+.feedback{
+    padding: 50px 50px;
+    margin-bottom: 40px;
+}
+
+.feedback h2.name{
+    font-size: 30px;
+}
+
+.feedback h2 span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 23px;
+    color: grey;
+}
+
+.feedback p{
+    font-style: normal;
+    font-size: 18px;
+    margin-top: 50px;
+}
+
+.feedback .month-name{
+    margin-bottom: -30px;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 1.25px;
+}

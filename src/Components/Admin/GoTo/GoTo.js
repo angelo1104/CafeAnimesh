@@ -2,11 +2,11 @@ import React from "react";
 import './GoTo.css';
 import {Link} from "react-router-dom";
 
-function GoTo() {
+function GoTo({url,displayText}) {
     return(
-        <Link to={'/admin-docs'} className={'goto-link'}>
+        <Link to={`/${url}`} className={'goto-link'}>
             <div className="goto">
-                <p>Add some documents</p>
+                <p>{displayText}</p>
             </div>
         </Link>
     )

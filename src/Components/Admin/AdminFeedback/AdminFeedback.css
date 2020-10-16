@@ -1,0 +1,10 @@
+.admin-feedback .review-heading{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.admin-feedback .review-heading h2.title{
+    margin-left: 50px;
+    border-bottom: 1px solid lightgray;
+    width: 80%;
+}
