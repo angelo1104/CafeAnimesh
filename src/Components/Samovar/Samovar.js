@@ -23,7 +23,11 @@ function Samovar() {
     useEffect(()=>{
         const main = document.querySelector('.main#samovar')
 
-        main.innerHTML = html[0]?.html
+        if (html[0]?.html){
+            main.innerHTML = html[0]?.html
+        }else {
+            main.innerHTML = '<p>There are no samovars yet.</p>'
+        }
     },[html])
 
     return (
