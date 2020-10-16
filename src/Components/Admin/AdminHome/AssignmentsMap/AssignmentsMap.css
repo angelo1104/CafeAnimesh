@@ -1,0 +1,40 @@
+.assignments-map{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    padding: 30px;
+    grid-template-columns: repeat(5,1fr);
+    grid-row-gap: 80px;
+    grid-column-gap: 40px;
+}
+
+.main-assignments-map h2{
+    font-family: 'Playfair Display', serif;
+}
+
+.main-assignments-map h4{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.file-type{
+    background-color: teal;
+}
+
+.file-assignments{
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.file-assignments a{
+    margin-left: 70px;
+    margin-top: 15px;
+    color: grey !important;
+}
+
+.file-assignments a:hover{
+    color: #333333 !important;
+}

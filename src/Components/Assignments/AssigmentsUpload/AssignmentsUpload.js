@@ -34,6 +34,7 @@ function AssignmentsUpload() {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
+                fileName: files.name
             })
             .then(res=>{
                 console.log('created db')
