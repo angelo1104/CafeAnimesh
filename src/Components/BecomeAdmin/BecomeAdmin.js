@@ -6,10 +6,14 @@ import {CardElement, useElements, useStripe} from "@stripe/react-stripe-js";
 import {useStateValue} from "../../StateProvider";
 import {Button} from "@material-ui/core";
 import axios from "../../axios";
+import {database} from "../../firebase";
+import {useHistory} from 'react-router-dom';
 
 function BecomeAdmin() {
     //eslint-disable-next-line
     const [{user},dispatch] = useStateValue()
+
+    const history = useHistory()
 
     const element = useElements();
     const stripe = useStripe();
@@ -58,6 +62,22 @@ function BecomeAdmin() {
     const onSuccessfulCheckout = ()=>{
         console.log('success');
         setCheckoutError('')
+
+        database.collection('users')
+            .doc(user.email)
+            .update({
+                userType: 'admin'
+            })
+            .then(res=>{
+                console.log('successfully made admin')
+
+                setTimeout(()=>{
+                    history.replace('/admin')
+                },1000)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
     }
 
     const handlePayment = async (event)=>{
@@ -134,7 +154,7 @@ function BecomeAdmin() {
 
                 <CardElement options={cardElementOptions}/>
 
-                <Button disabled={isProcessing} className={'pay-button'} onClick={handlePayment}>{isProcessing? 'Processing...':`Pay ${price}`}</Button>
+                <Button disabled={isProcessing} className={'pay-button'} onClick={handlePayment}>{isProcessing? 'Processing...':`Pay $${price}`}</Button>
             </div>
 
         </div>

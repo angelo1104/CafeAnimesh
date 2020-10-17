@@ -11,6 +11,11 @@ const reducer = (state,action)=>{
                 user: action.user,
                 userType: action.userType
             }
+        case 'SET_USER_TYPE':
+            return {
+                ...state,
+                userType: action.userType
+            }
         default:
             return [...state]
     }

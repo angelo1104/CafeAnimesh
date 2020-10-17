@@ -44,6 +44,17 @@ function App() {
                     user: authUser,
                     userType: userType
                 })
+
+                database.collection('users')
+                    .doc(authUser.email)
+                    .onSnapshot({
+                        includeMetadataChanges: true
+                    },(doc)=>{
+                        dispatch({
+                            type: 'SET_USER_TYPE',
+                            userType: doc.data().userType
+                        })
+                    })
             } else {
                 dispatch({
                     type: 'SET_USER',
@@ -51,6 +62,7 @@ function App() {
                 })
             }
         })
+
     }, [dispatch, userType])
 
     return (
