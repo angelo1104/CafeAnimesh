@@ -4,9 +4,19 @@ import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
 import Resources from "./Resources/Resources";
 import {database} from "../../firebase";
+import {useHistory} from 'react-router-dom';
+import {useStateValue} from "../../StateProvider";
 
 function Documents() {
     const [documents,setDocuments] = useState([])
+
+    const history = useHistory()
+
+    const [{user}] = useStateValue()
+
+    useEffect(()=>{
+        if (!user) history.replace('/')
+    },[user,history])
 
     useEffect(()=>{
         database.collection('documents')

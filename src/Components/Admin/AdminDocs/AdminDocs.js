@@ -1,10 +1,20 @@
-import React from "react";
+import React, {useEffect} from "react";
 import './AdminDocs.css'
 import Banner from "../../Banner/Banner";
 import DropZone from "../../Documents/Resources/DropZone/DropZone";
 import Header from "../../Header/Header";
+import {useHistory} from 'react-router-dom';
+import {useStateValue} from "../../../StateProvider";
 
 function AdminDocs() {
+    const history = useHistory()
+
+    const [{user,userType}] = useStateValue();
+
+    useEffect(()=>{
+        if (!user) history.replace('/')
+        else if (userType==='admin') history.replace('/home')
+    },[history,user,userType])
 
     return(
         <div className="admin-docs">

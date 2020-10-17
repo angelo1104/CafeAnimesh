@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './BecomeAdmin.css'
 import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
@@ -11,7 +11,7 @@ import {useHistory} from 'react-router-dom';
 
 function BecomeAdmin() {
     //eslint-disable-next-line
-    const [{user},dispatch] = useStateValue()
+    const [{user,userType},dispatch] = useStateValue()
 
     const history = useHistory()
 
@@ -29,6 +29,11 @@ function BecomeAdmin() {
     const [isProcessing,setIsProcessing] = useState(false)
     const [checkoutError,setCheckoutError] = useState('')
     const price = 20;
+
+    useEffect(()=>{
+        if (!user) history.replace('/')
+        else if (userType==='admin') history.replace('/admin')
+    },[user,userType,history])
 
     const billingDetails = {
         name: `${firstName} ${lastName}`,
@@ -70,10 +75,6 @@ function BecomeAdmin() {
             })
             .then(res=>{
                 console.log('successfully made admin')
-
-                setTimeout(()=>{
-                    history.replace('/admin')
-                },1000)
             })
             .catch(err=>{
                 console.log(err)

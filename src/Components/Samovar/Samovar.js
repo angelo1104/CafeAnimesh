@@ -3,9 +3,18 @@ import './Samovar.css';
 import Header from "../Header/Header";
 import Banner from "../Banner/Banner";
 import {database} from "../../firebase";
+import {useStateValue} from "../../StateProvider";
+import {useHistory} from 'react-router-dom';
 
 function Samovar() {
+    const history = useHistory()
     const [html,setHtml] = useState([])
+
+    const [{user}] = useStateValue();
+
+    useEffect(()=>{
+        if (!user) history.replace('/')
+    },[user,history])
 
     useEffect(()=>{
         database.collection('Samovar')

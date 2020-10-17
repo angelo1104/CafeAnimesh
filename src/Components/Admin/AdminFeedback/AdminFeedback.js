@@ -4,8 +4,19 @@ import Header from "../../Header/Header";
 import Banner from "../../Banner/Banner";
 import FeedBack from "./FeedBack/FeedBack";
 import {database} from "../../../firebase";
+import {useHistory} from 'react-router-dom';
+import {useStateValue} from "../../../StateProvider";
 
 function AdminFeedBack() {
+    const history = useHistory()
+
+    const [{user,userType}] = useStateValue();
+
+    useEffect(()=>{
+        if (!user) history.replace('/')
+        else if (userType==='admin') history.replace('/home')
+    },[history,user,userType])
+
     const [weeklyReviews,setWeeklyReviews] = useState([])
     const [monthlyReviews,setMonthlyReviews] = useState([])
 
