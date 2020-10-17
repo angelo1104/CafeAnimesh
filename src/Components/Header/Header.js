@@ -48,9 +48,9 @@ function Header() {
                 <Link className='header-link' to='/samovar'>
                     <p>Samovar</p>
                 </Link>
-                <Link className='header-link' to='/class'>
-                    <p>Class</p>
-                </Link>
+                {userType!=='admin' && <Link className='header-link' to='/class/become-admin'>
+                    <p>Become Admin</p>
+                </Link>}
                 <Link className='header-link' to='/assignments'>
                     <p>Assignments</p>
                 </Link>

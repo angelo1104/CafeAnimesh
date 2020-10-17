@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Login from "./Components/Login/Login";
 import SignIn from "./Components/Login/SignIn";
 import {auth, database} from "./firebase";
@@ -15,83 +15,93 @@ import AdminFeedBack from "./Components/Admin/AdminFeedback/AdminFeedback";
 import AdminAssignments from "./Components/Admin/AdminAssignments/AdminAssignments";
 import Samovar from "./Components/Samovar/Samovar";
 import AdminSamovar from "./Components/Admin/AdminSamovar/AdminSamovar";
+import BecomeAdmin from "./Components/BecomeAdmin/BecomeAdmin";
+import {loadStripe} from "@stripe/stripe-js/pure";
+import {Elements} from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe('pk_test_51HRUplG7mYQXcjRQLgPD5Y9RtRiNYSqgfEEy8KezalgBXUNRMfpqnja5Ht0GHgOHpiZo5dobSXRuDMuGiZsU4fYf00iPpQBrTM')
 
 function App() {
     //eslint-disable-next-line
-  const [state,dispatch] = useStateValue()
-  const [userType,setUserType] = useState(null)
+    const [state, dispatch] = useStateValue()
+    const [userType, setUserType] = useState(null)
 
-  useEffect(()=>{
-      auth.onAuthStateChanged((authUser)=>{
-          if (authUser){
-              database.collection('users')
-                  .doc(authUser.email)
-                  .get()
-                  .then(user=>{
-                      setUserType(user.data().userType)
-                  })
-                  .catch(err=>{
-                      console.log(err)
-                  })
+    useEffect(() => {
+        auth.onAuthStateChanged((authUser) => {
+            if (authUser) {
+                database.collection('users')
+                    .doc(authUser.email)
+                    .get()
+                    .then(user => {
+                        setUserType(user.data().userType)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
 
-              dispatch({
-                  type: 'SET_USER',
-                  user: authUser,
-                  userType: userType
-              })
-          }else {
-              dispatch({
-                  type:'SET_USER',
-                  user: null
-              })
-          }
-      })
-  },[dispatch,userType])
+                dispatch({
+                    type: 'SET_USER',
+                    user: authUser,
+                    userType: userType
+                })
+            } else {
+                dispatch({
+                    type: 'SET_USER',
+                    user: null
+                })
+            }
+        })
+    }, [dispatch, userType])
 
-  return (
-    <div className="App">
-        <Router>
-            <Switch>
-                <Route path={'/admin'}>
-                    {<AdminHome />}
-                </Route>
-                <Route path={'/admin-samovar'}>
-                    <AdminSamovar />
-                </Route>
-                <Route path={'/admin-docs'}>
-                    <AdminDocs />
-                </Route>
-                <Route path={'/admin-assignments'}>
-                    <AdminAssignments/>
-                </Route>
-                <Route path={'/admin-feedback'}>
-                    <AdminFeedBack/>
-                </Route>
-                <Route path={'/accounts/emaillogin'}>
-                    <SignIn />
-                </Route>
-                <Route path={'/samovar'}>
-                    <Samovar/>
-                </Route>
-                <Route path={'/assignments'}>
-                    <Assignments/>
-                </Route>
-                <Route path={'/feedback'}>
-                    <FeedBack/>
-                </Route>
-                <Route path={'/documents'}>
-                    <Documents />
-                </Route>
-                <Route path={'/home'}>
-                    <Home />
-                </Route>
-                <Route path='/'>
-                    <Login />
-                </Route>
-            </Switch>
-        </Router>
-    </div>
-  );
+    return (
+        <Elements stripe={stripePromise}>
+            <div className="App">
+                <Router>
+                    <Switch>
+                        <Route path={'/class/become-admin'}>
+                            <BecomeAdmin/>
+                        </Route>
+                        <Route path={'/admin'}>
+                            {<AdminHome/>}
+                        </Route>
+                        <Route path={'/admin-samovar'}>
+                            <AdminSamovar/>
+                        </Route>
+                        <Route path={'/admin-docs'}>
+                            <AdminDocs/>
+                        </Route>
+                        <Route path={'/admin-assignments'}>
+                            <AdminAssignments/>
+                        </Route>
+                        <Route path={'/admin-feedback'}>
+                            <AdminFeedBack/>
+                        </Route>
+                        <Route path={'/accounts/emaillogin'}>
+                            <SignIn/>
+                        </Route>
+                        <Route path={'/samovar'}>
+                            <Samovar/>
+                        </Route>
+                        <Route path={'/assignments'}>
+                            <Assignments/>
+                        </Route>
+                        <Route path={'/feedback'}>
+                            <FeedBack/>
+                        </Route>
+                        <Route path={'/documents'}>
+                            <Documents/>
+                        </Route>
+                        <Route path={'/home'}>
+                            <Home/>
+                        </Route>
+                        <Route path='/'>
+                            <Login/>
+                        </Route>
+                    </Switch>
+                </Router>
+            </div>
+        </Elements>
+    );
 }
 
 export default App;

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cafe-animesh.iml" filepath="$PROJECT_DIR$/.idea/cafe-animesh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../cafe-animesh-server/.idea/cafe-animesh-server.iml" filepath="$PROJECT_DIR$/../cafe-animesh-server/.idea/cafe-animesh-server.iml" />
     </modules>
   </component>
 </project>
