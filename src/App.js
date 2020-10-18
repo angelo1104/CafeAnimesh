@@ -19,7 +19,7 @@ import BecomeAdmin from "./Components/BecomeAdmin/BecomeAdmin";
 import {loadStripe} from "@stripe/stripe-js/pure";
 import {Elements} from "@stripe/react-stripe-js";
 
-const stripePromise = loadStripe('pk_test_51HRUplG7mYQXcjRQLgPD5Y9RtRiNYSqgfEEy8KezalgBXUNRMfpqnja5Ht0GHgOHpiZo5dobSXRuDMuGiZsU4fYf00iPpQBrTM')
+const stripePromise = loadStripe('pk_live_51HRUplG7mYQXcjRQlpktqJD8FgZVdbxA0tULJ6gWRMyZz0s9xv4w7rD2lYFjWkRPzBgVLmgcLJ5ulBF76vT0Cbdp00xZ9g3Bnz')
 
 function App() {
     //eslint-disable-next-line
