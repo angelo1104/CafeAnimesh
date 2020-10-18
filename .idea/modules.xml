@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/cafe-animesh.iml" filepath="$PROJECT_DIR$/.idea/cafe-animesh.iml" />
       <module fileurl="file://$PROJECT_DIR$/../cafe-animesh-server/.idea/cafe-animesh-server.iml" filepath="$PROJECT_DIR$/../cafe-animesh-server/.idea/cafe-animesh-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../serverless-cafe-animesh/.idea/serverless-cafe-animesh.iml" filepath="$PROJECT_DIR$/../serverless-cafe-animesh/.idea/serverless-cafe-animesh.iml" />
     </modules>
   </component>
 </project>

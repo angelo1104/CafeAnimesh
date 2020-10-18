@@ -25,7 +25,7 @@ function Login() {
         auth.createUserWithEmailAndPassword(email,password)
             .then(authUser=>{
                 let userType = 'user'
-                if (email==='alix@gmail.com') userType='admin'
+                if (email==='madhav_anand@outlook.com') userType='admin'
                 database.collection('users')
                     .doc(email)
                     .set({

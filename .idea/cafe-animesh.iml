@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cafe-animesh-server" />
+    <orderEntry type="module" module-name="serverless-cafe-animesh" />
   </component>
 </module>

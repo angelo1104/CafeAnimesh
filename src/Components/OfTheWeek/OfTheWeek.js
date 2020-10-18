@@ -27,17 +27,22 @@ function OfTheWeek({type}) {
                })
                 setDocuments(docs)
 
-                database.collection(type)
-                    .doc(docs[docs?.length-1]?.id)
-                    .collection('comments')
-                    .onSnapshot(snapshot=>{
-                        const arrayOfComments = snapshot.docs.map(doc=>{
-                            return <p key={doc.id} className="comment"> <span key={doc.id} className="username">{doc.data().username}</span>{doc.data().text}</p>
-                        })
+                try {
+                    database.collection(type)
+                        .doc(docs[docs?.length-1]?.id)
+                        .collection('comments')
+                        .onSnapshot(snapshot=>{
+                            const arrayOfComments = snapshot.docs.map(doc=>{
+                                return <p key={doc.id} className="comment"> <span key={doc.id} className="username">{doc.data().username}</span>{doc.data().text}</p>
+                            })
 
-                        setCommentCount(arrayOfComments.length)
-                        setComments(arrayOfComments)
-                    })
+                            setCommentCount(arrayOfComments.length)
+                            setComments(arrayOfComments)
+                        })
+                }catch (e) {
+                    console.log(e)
+                }
+
             })
 
         return()=>{
