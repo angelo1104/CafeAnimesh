@@ -13,7 +13,7 @@ function AdminAssignments() {
 
     useEffect(()=>{
         if (!user) history.replace('/')
-        else if (userType==='admin') history.replace('/home')
+        else if (userType!=='admin') history.replace('/home')
     },[history,user,userType])
 
 
