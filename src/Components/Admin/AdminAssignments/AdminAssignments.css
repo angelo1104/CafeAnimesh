@@ -1,0 +1,10 @@
+.review-download{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    cursor: pointer;
+    color: #0095F6;
+}
+
+.review-download:hover{
+    text-decoration: underline #0095F6;
+}

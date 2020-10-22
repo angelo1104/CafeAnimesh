@@ -6,6 +6,8 @@ import FeedBack from "./FeedBack/FeedBack";
 import {database} from "../../../firebase";
 import {useHistory} from 'react-router-dom';
 import {useStateValue} from "../../../StateProvider";
+import axios from "../../../axios";
+import fileDownload from "js-file-download";
 
 function AdminFeedBack() {
     const history = useHistory()
@@ -49,13 +51,37 @@ function AdminFeedBack() {
             })
     },[])
 
+    const getMonthlyReviewDownload = ()=>{
+        axios.get('/feedback/monthly')
+            .then(res=>{
+                console.log(res)
+
+                fileDownload(res.data,'monthlyReview.csv')
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
+    const getWeeklyReviewDownload = ()=>{
+        axios.get('/feedback/weekly')
+            .then(res=>{
+                console.log(res)
+
+                fileDownload(res.data,'weeklyReview.csv')
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
     return (
         <div className="admin-feedback">
             <Header />
             <Banner imageUrl={'http://cafeanimesh.weebly.com/files/theme/images/bg-light.jpg?1592320655'} title={'Check out'}/>
             <div className="review-heading">
                 <div className="monthly-reviews">
-                    <h2 className={'title'}>Monthly Reviews</h2>
+                    <h2 className={'title'}>Monthly Reviews <span onClick={getMonthlyReviewDownload} className="review-download">(Download)</span></h2>
                     {
                         monthlyReviews.map(review=>{
                             return (
@@ -71,7 +97,7 @@ function AdminFeedBack() {
                 </div>
 
                 <div className="weekly-reviews">
-                    <h2 className={'title'}>Weekly Reviews</h2>
+                    <h2 className={'title'}>Weekly Reviews <span onClick={getWeeklyReviewDownload} className="review-download">(Download)</span></h2>
                     {
                         weeklyReviews.map(review=>{
                             return (
