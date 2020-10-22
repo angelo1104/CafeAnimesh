@@ -23,6 +23,11 @@ function MonthlyReview() {
             })
             .then(res=>{
                 console.log('successfully added to db')
+                setFirstName('')
+                setLastName('')
+                setComment('')
+                setMonth('January')
+                setSelected('very satisfied')
                 setMessage('Your feedback is successfully submitted.')
             })
             .catch(err=>{

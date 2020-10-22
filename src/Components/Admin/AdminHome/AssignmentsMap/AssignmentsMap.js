@@ -6,7 +6,7 @@ function AssignmentsMap() {
     const [assignments,setAssignments] = useState([])
 
     useEffect(()=>{
-        database.collection('assignments')
+        const unsubscribeDocuments = database.collection('assignments')
             .onSnapshot(snapshot => {
                 setAssignments(snapshot.docs.map(assignment=>({
                     firstName: assignment.data().firstName,
@@ -17,6 +17,9 @@ function AssignmentsMap() {
                 })))
             })
 
+        return()=>{
+            unsubscribeDocuments()
+        }
     },[])
 
     function getExtension(path) {

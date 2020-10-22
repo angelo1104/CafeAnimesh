@@ -21,6 +21,10 @@ function WeeklyReview() {
             })
             .then(res=>{
                 console.log('successfully added to db')
+                setFirstName('')
+                setLastName('')
+                setComment('')
+                setSelected('very satisfied')
                 setMessage('Your feedback is successfully submitted.')
             })
             .catch(err=>{

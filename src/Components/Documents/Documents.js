@@ -19,7 +19,7 @@ function Documents() {
     },[user,history])
 
     useEffect(()=>{
-        database.collection('documents')
+        const unsubscribeDocuments = database.collection('documents')
             .onSnapshot(snapshot => {
                 setDocuments(snapshot.docs.map(file=>{
                     return{
@@ -28,7 +28,11 @@ function Documents() {
                     }
                 }))
             })
-    })
+
+        return()=>{
+            unsubscribeDocuments()
+        }
+    },[])
 
     return(
         <div className="documents">

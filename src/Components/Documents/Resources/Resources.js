@@ -17,7 +17,7 @@ function Resources({title,id}) {
     }
 
     useEffect(()=>{
-        database.collection('documents')
+       const unsubscribeResources =  database.collection('documents')
             .doc(id)
             .collection('files')
             .onSnapshot(snapshot=>{
@@ -29,7 +29,11 @@ function Resources({title,id}) {
                     }
                 }))
             })
-    })
+
+            return ()=>{
+           unsubscribeResources()
+        }
+    },[id])
 
     return(
         <div className="resources">

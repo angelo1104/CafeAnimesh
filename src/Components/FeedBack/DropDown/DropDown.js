@@ -37,10 +37,9 @@ function DropDown({menu,label,value,setValue}) {
                 id="demo-simple-select-placeholder-label"
                 value={value}
                 onChange={handleChange}
-                displayEmpty
                 className={classes.selectEmpty}
             >
-                <MenuItem value="">
+                <MenuItem value={menu[0]}>
                     <em>{menu[0]}</em>
                 </MenuItem>
                 {newMenu?.map((item,i)=>{

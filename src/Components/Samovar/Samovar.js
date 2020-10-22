@@ -17,7 +17,7 @@ function Samovar() {
     },[user,history])
 
     useEffect(()=>{
-        database.collection('Samovar')
+        const unsubscribeSamovar = database.collection('Samovar')
             .orderBy('timestamp','desc')
             .limit(1)
             .onSnapshot(snapshot => {
@@ -27,6 +27,10 @@ function Samovar() {
                     }
                 }))
             })
+
+        return()=>{
+            unsubscribeSamovar()
+        }
     },[])
 
     useEffect(()=>{

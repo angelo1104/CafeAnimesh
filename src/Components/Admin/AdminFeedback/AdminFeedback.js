@@ -23,7 +23,7 @@ function AdminFeedBack() {
     const [monthlyReviews,setMonthlyReviews] = useState([])
 
     useEffect(()=>{
-        database.collection('weekly review')
+        const unsubscribeWeeklyReview = database.collection('weekly review')
             .onSnapshot(snapshot => {
                 setWeeklyReviews(snapshot.docs.map(review=>{
                     return {
@@ -35,10 +35,14 @@ function AdminFeedBack() {
                     }
                 }))
             })
+
+        return ()=>{
+            unsubscribeWeeklyReview()
+        }
     },[])
 
     useEffect(()=>{
-        database.collection('monthly review')
+        const unsubscribeReview = database.collection('monthly review')
             .onSnapshot(snapshot => {
                 setMonthlyReviews(snapshot.docs.map(review=>({
                     id: review.id,
@@ -49,6 +53,10 @@ function AdminFeedBack() {
                     month: review.data().month
                 })))
             })
+
+        return()=>{
+            unsubscribeReview()
+        }
     },[])
 
     const getMonthlyReviewDownload = ()=>{
